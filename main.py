@@ -33,14 +33,17 @@ def parse(file_name):
             codex.write('\n')
 
 if __name__ == "__main__":
-    url = f'https://playorna.com/codex/items/?p=1'
-    print(f'Requesting page')
-    fetch_and_save_html(url, 'page.html')
-    parse('page.html')
-    time.sleep(10)
+    for i in range(1,62):
+        url = f'https://playorna.com/codex/items/?p={i}'
+        print(f'Requesting page {i}')
+        file_name = 'page.html'
+
+        fetch_and_save_html(url, file_name)
+        parse(file_name)
+        time.sleep(10)
 
     codex_items=[]
     with open('temp.dump','r',encoding='utf-8') as content, open('codex.json', 'w', encoding='utf-8') as codex:
         [codex_items.append(json.loads(line)) for line in content]
-        codex.write(json.dumps(codex_items))
+        codex.write(json.dumps(codex_items,indent=4))
     
