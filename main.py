@@ -51,7 +51,7 @@ if __name__ == "__main__":
         url = f'https://playorna.com/codex/items/?p={page}'
 
     codex_items = []
-    with open('temp.dump', 'r', encoding='utf-8') as content, open('items.txt', 'w', encoding='utf-8') as codex:
+    with open('temp.dump', 'r', encoding='utf-8') as content, open('items.json', 'w', encoding='utf-8') as codex:
         [codex_items.append(json.loads(line)) for line in content]
         codex.write(json.dumps(codex_items, indent=4))
     os.remove("temp.dump")
