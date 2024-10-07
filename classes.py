@@ -30,7 +30,7 @@ def parse(content) -> bool:
         details['link'] = "https://playorna.com" + _class['href']
         details['img'] = _class.contents[0].contents[0]['src']
         tag = {}
-        tag[_class.contents[1].contents[0]] = details
+        tag[_class['href'].split("/")[-2]] = details
         json_data = json.dumps(tag)
         with open('temp.dump', 'a', encoding='utf-8') as codex:
             codex.write(json_data)

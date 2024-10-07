@@ -27,10 +27,11 @@ def parse(content) -> bool:
         details = {}
         details['name'] = item.contents[1].contents[0]
         details['tier'] = item.contents[2].contents[0].replace('\u2605', '')
+        details['link'] = "https://playorna.com" + item['href']
         details['rarity'] = item.contents[0].contents[0]['class'][0]
         details['img'] = item.contents[0].contents[0]['src']
         tag = {}
-        tag[item.contents[1].contents[0]] = details
+        tag[item['href'].split("/")[-2]] = details
         json_data = json.dumps(tag)
         with open('temp.dump', 'a', encoding='utf-8') as codex:
             codex.write(json_data)
