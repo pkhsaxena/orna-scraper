@@ -27,7 +27,6 @@ def parse(content) -> bool:
         details = {}
         details['name'] = item.contents[1].contents[0]
         details['tier'] = item.contents[2].contents[0].replace('\u2605', '')
-        details['link'] = "https://playorna.com" + item['href']
         details['rarity'] = item.contents[0].contents[0]['class'][0]
         details['img'] = item.contents[0].contents[0]['src']
         tag = {}
